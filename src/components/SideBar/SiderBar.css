@@ -1,0 +1,21 @@
+.sideBar {
+  background-color: #111111;
+  max-width: 25%;
+  display: inline-block;
+  border-radius: 8px;
+  margin: 0px 15px;
+  height: 100%;
+  text-transform: uppercase;
+}
+
+.sideBar .title {
+  padding: 10px;
+  margin: 0px 0px 10px;
+  font-size: 18px;
+  height: 5%;
+}
+
+.items-area {
+  position: relative;
+  height: 95%;
+}

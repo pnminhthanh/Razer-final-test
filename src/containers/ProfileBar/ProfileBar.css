@@ -1,0 +1,13 @@
+.option {
+  width: 100%;
+  line-height: 25px !important;
+  text-transform: capitalize;
+  padding: 4px 5px;
+  font-size: 14px;
+  /* position: relative; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 25px;
+}
