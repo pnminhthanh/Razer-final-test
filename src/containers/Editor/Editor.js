@@ -10,7 +10,7 @@ export const Editor = props => {
   }
 
   return (
-    <div className="editor flex">
+    <div className="editor">
       {itemElementArray.map(item => (
         <Item elementType={item.config.type} value={item.config.value} />
       ))}
