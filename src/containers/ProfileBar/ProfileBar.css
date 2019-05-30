@@ -11,3 +11,16 @@
   max-width: 100%;
   min-height: 25px;
 }
+
+.barrier {
+  width: 1px;
+  height: 25px;
+  background: #515151;
+  margin-right: 15px;
+}
+
+.new-macro {
+  text-decoration: underline;
+  cursor: pointer;
+  text-transform: capitalize;
+}

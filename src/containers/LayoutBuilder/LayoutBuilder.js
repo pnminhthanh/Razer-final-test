@@ -13,12 +13,43 @@ import '../../assets/css/dropdown.css';
 // import '../../assets/css/tooltip.css';
 
 const LayoutBuilder = () => {
-  const [listProfiles, setListProfiles] = useState([]);
+  const [selected, setSelected] = useState(0);
+  const [macroItems, setMacroItems] = useState({
+    data: [
+      {
+        name: 'macro 1',
+        choose: 'selected',
+        items: [],
+      },
+      {
+        name: 'macro 2',
+        choose: '',
+        items: [],
+      },
+      {
+        name: 'macro 3',
+        choose: '',
+        items: [],
+      },
+      {
+        name: 'macro 4',
+        choose: '',
+        items: [],
+      },
+      {
+        name: 'macro 5',
+        choose: '',
+        items: [],
+      },
+    ],
+  });
+
+  useEffect(() => console.log(macroItems.data[selected].items));
 
   const addMacro = props => {
-    const list = [...listProfiles];
-
-    if (listProfiles.find(i => i.type == props) === undefined) {
+    const list = [...macroItems.data[selected].items];
+    let listMacros = [...macroItems.data];
+    if (list.find(i => i.type === props) === undefined) {
       var item = null;
 
       switch (props) {
@@ -57,16 +88,37 @@ const LayoutBuilder = () => {
           break;
       }
       list.push(item);
-      setListProfiles(list);
+      listMacros[selected].items = list;
+      setMacroItems({ data: listMacros });
     }
+  };
+
+  const updateMacroItems = item => {
+    setMacroItems({ data: item.data });
+    setSelected(item.selected);
+  };
+
+  const changeItemValue = item => {
+    console.log(item);
+    var list = [...macroItems.data];
+    var index = list[selected].items.findIndex(i => i.type === item.type);
+    list[selected].items[index].value = item.value;
+    setMacroItems({ data: list });
   };
 
   return (
     <div className="main-container">
-      <ProfileBar />
+      <ProfileBar
+        macroItems={macroItems.data}
+        selected={selected}
+        updateMacroItems={item => updateMacroItems(item)}
+      />
       <div className="body-widgets flex">
         <SideBar listMenuItems={listMenuItems} addMacro={addMacro} />
-        <Editor listProfiles={listProfiles} />
+        <Editor
+          listProfiles={macroItems.data[selected].items}
+          changeItemValue={item => changeItemValue(item)}
+        />
       </div>
     </div>
   );
