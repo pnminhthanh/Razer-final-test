@@ -60,28 +60,28 @@ const LayoutBuilder = () => {
           item = { type: 'mouse', value: 'left' };
           break;
         case 'macro':
-          item = { type: 'macro', value: 0 };
+          item = { type: 'macro', value: null };
           break;
         case 'switchDevice':
-          item = { type: 'switchDevice', value: '' };
+          item = { type: 'switchDevice', value: null };
           break;
         case 'switchLighting':
-          item = { type: 'switchLighting', value: '' };
+          item = { type: 'switchLighting', value: null };
           break;
         case 'launch':
-          item = { type: 'launch', value: 0 };
+          item = { type: 'launch', value: null };
           break;
         case 'command':
-          item = { type: 'command', value: 0 };
+          item = { type: 'command', value: null };
           break;
         case 'multimedia':
-          item = { type: 'multimedia', value: 0 };
+          item = { type: 'multimedia', value: null };
           break;
         case 'text':
-          item = { type: 'text', value: 0 };
+          item = { type: 'text', value: null };
           break;
         case 'loop':
-          item = { type: 'loop', value: 0 };
+          item = { type: 'loop', value: null };
           break;
         default:
           item = { type: 'delay', value: 0 };

@@ -10,7 +10,6 @@ export const SideBar = props => {
       text={item.text}
       className={props.isChosen ? 'menuItem choose' : 'menuItem'}
       clicked={() => {
-        console.log('clicked');
         props.addMacro(item.type);
       }}
     />

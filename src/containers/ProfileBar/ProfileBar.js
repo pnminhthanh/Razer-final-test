@@ -7,8 +7,25 @@ export const ProfileBar = props => {
   const [showRename, setShowRename] = useState(false);
   const [tempAddNum, setTempAddNum] = useState(0);
   const [tempName, setTempName] = useState('');
-  const inputEl = useRef(null);
+  let macroDrp = useRef(null);
+  let menuDrp = useRef(null);
   const macroItems = props.macroItems;
+
+  useEffect(() => {
+    document.addEventListener('mousedown', clickOutsideProfileBarHandler);
+    return () =>
+      document.removeEventListener('mousedown', clickOutsideProfileBarHandler);
+  });
+
+  const clickOutsideProfileBarHandler = e => {
+    if (macroDrp.current && !macroDrp.current.contains(e.target)) {
+      setShowMacroDropdown({ isShow: false });
+    }
+    if (menuDrp.current && !menuDrp.current.contains(e.target)) {
+      setShowMenuDropdown({ isShow: false });
+    }
+  };
+
   let listMacros = macroItems.map((items, index) => (
     <div
       id={index}
@@ -112,7 +129,6 @@ export const ProfileBar = props => {
           type="text"
           name="profile"
           id="profileEdit"
-          ref={inputEl}
           maxLength={25}
           className={showRename ? 'show' : ''}
           value={tempName}
@@ -133,6 +149,7 @@ export const ProfileBar = props => {
         </div>
         <div
           id="profileDropOpt"
+          ref={macroDrp}
           className={
             showMacroDropdown.isShow
               ? 's3-options flex expand'
@@ -154,6 +171,7 @@ export const ProfileBar = props => {
             showMenuDropdown.isShow ? 'profile-act show' : 'profile-act'
           }
           id="profileMenu"
+          ref={menuDrp}
         >
           <div className="act action" onClick={addItem}>
             add
